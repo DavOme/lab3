@@ -35,7 +35,7 @@ public abstract class Vehicle implements Movable {
         else if (direction == 6) {
             y -= currentSpeed;
         }
-        else x += currentSpeed;
+        else y += currentSpeed;
     }
 
     @Override

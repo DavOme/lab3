@@ -11,7 +11,7 @@ public class DrawPanel extends JPanel {
 
     private ArrayList<DrawableCar> cars;
     BufferedImage workshopImage;
-    Point workshopPoint = new Point(685, 0);
+    Point workshopPoint;
 
     public DrawPanel(int x, int y, ArrayList<DrawableCar> cars) {
         this.cars = cars;
@@ -34,6 +34,11 @@ public class DrawPanel extends JPanel {
             int y = (int) dc.vehicle.getY();
             g.drawImage(dc.image, x, y, null);
         }
+
+        int x = getWidth() - workshopImage.getWidth();
+        int y = 0;
+
+        workshopPoint = new Point(x, y);
 
         g.drawImage(workshopImage, workshopPoint.x, workshopPoint.y, null);
     }

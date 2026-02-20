@@ -5,7 +5,7 @@ public class Saab95 extends Transportable {
     private boolean turboOn;
 
     public Saab95(){
-        super(0.0,0.0,0, 2, 125, 0, Color.red, "Saab95", new Bed());
+        super(0.0,0.0,3, 2, 125, 0, Color.red, "Saab95", new Bed());
     }
 
     public void setTurboOn(){

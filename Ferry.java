@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 public class Ferry extends Transporter{
     public Ferry() {
-        super(0.0,0.0,0,2, 200, 0, Color.white, "Stena Line", new Bed(0, 0, true, false, false), new LinkedList<>());
+        super(0.0,0.0,3,2, 200, 0, Color.white, "Stena Line", new Bed(0, 0, true, false, false), new LinkedList<>());
     }
 
     @Override

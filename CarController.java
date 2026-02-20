@@ -74,17 +74,16 @@ public class CarController {
 
             while (it.hasNext()) {
                 DrawableCar dc = it.next();
-                Vehicle car = dc.vehicle;
 
-                car.move();
+                dc.vehicle.move();
 
-                if (collide(car)) {
-                    handleWallCollision(car);
+                if (collide(dc)) {
+                    handleWallCollision(dc);
                 }
 
                 if (enterWorkshop(dc)) {
-                    if (car instanceof Volvo240) {
-                        car.stopEngine();
+                    if (dc.vehicle instanceof Volvo240) {
+                        dc.vehicle.stopEngine();
                         it.remove();
                         continue;
                     }
@@ -95,36 +94,36 @@ public class CarController {
         }
     }
 
-    private void handleWallCollision(Vehicle car) {
-        car.stopEngine();
+    private void handleWallCollision(DrawableCar car) {
+        car.vehicle.stopEngine();
 
-        car.turnRight();
-        car.turnRight();
+        car.vehicle.turnRight();
+        car.vehicle.turnRight();
 
         clampPosition(car);
 
-        car.startEngine();
+        car.vehicle.startEngine();
     }
 
-    private void clampPosition(Vehicle car) {
+    private void clampPosition(DrawableCar car) {
         int width = frame.drawPanel.getWidth();
         int height = frame.drawPanel.getHeight();
 
-        double x = Math.max(0, Math.min(car.getX(), width - 100));
-        double y = Math.max(0, Math.min(car.getY(), height - 60));
+        double x = Math.max(0, Math.min(car.vehicle.getX(), width - car.image.getWidth()));
+        double y = Math.max(0, Math.min(car.vehicle.getY(), height - car.image.getHeight()));
 
-        car.setX(x);
-        car.setY(y);
+        car.vehicle.setX(x);
+        car.vehicle.setY(y);
     }
 
-    private boolean collide (Vehicle vehicle) {
+    private boolean collide (DrawableCar dc) {
         int width = frame.drawPanel.getWidth();
         int height = frame.drawPanel.getHeight();
 
-        return  vehicle.getX() < 0 ||
-                vehicle.getX() > width ||
-                vehicle.getY() < 0 ||
-                vehicle.getY() > height;
+        return  dc.vehicle.getX() < 0 ||
+                dc.vehicle.getX() > width - dc.image.getWidth() ||
+                dc.vehicle.getY() < 0 ||
+                dc.vehicle.getY() > height - dc.image.getHeight();
 
     }
 
@@ -140,7 +139,7 @@ public class CarController {
         int cw = dc.image.getWidth();
         int ch = dc.image.getHeight();
 
-        return car.getX() < wx + ww &&
+        return  car.getX() < wx + ww &&
                 car.getX() + cw > wx &&
                 car.getY() < wy + wh &&
                 car.getY() + ch > wy;

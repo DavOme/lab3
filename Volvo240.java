@@ -5,7 +5,7 @@ public class Volvo240 extends Transportable {
     private final static double trimFactor = 1.25;
 
     public Volvo240(){
-        super(0.0,0.0,0,4, 100, 0, Color.black, "Volvo240", new Bed());
+        super(0.0,0.0,3, 4, 100, 0, Color.black, "Volvo240", new Bed());
     }
 
     @Override

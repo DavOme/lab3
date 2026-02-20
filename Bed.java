@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Bed {
     public int degree;
     public int maxDegree;

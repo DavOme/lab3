@@ -12,7 +12,7 @@ public abstract class Transporter extends Vehicle {
     @Override
     public void move() {
         if (direction == 3) {
-            x += currentSpeed;
+            y += currentSpeed;
         }
         else if (direction == 9) {
             x -= currentSpeed;
