@@ -20,7 +20,7 @@ public abstract class Transporter extends Vehicle {
         else if (direction == 6) {
             y -= currentSpeed;
         }
-        else y += currentSpeed;
+        else x += currentSpeed;
         for (Vehicle v : this.load) {
             v.setX(this.getX());
             v.setY(this.getY());
